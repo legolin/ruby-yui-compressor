@@ -85,7 +85,7 @@ module YUI #:nodoc:
     def compress(stream_or_string)
       streamify(stream_or_string) do |stream|
         tempfile = Tempfile.new('yui_compress')
-        tempfile.write stream.read
+        tempfile.write stream.read.force_encoding("utf-8")
         tempfile.flush
         full_command = "%s %s" % [command, tempfile.path]
 
